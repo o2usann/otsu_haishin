@@ -1,0 +1,9 @@
+__pycache__/
+*.py
+points.json
+obs_input.html
+add_points.py
+obs_add.py
+render_site.py
+server.py
+twitch_chat.py
