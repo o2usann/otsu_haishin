@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>応援pt入力</title>
+<style>
+  body { background:#111; color:#fff; font-family:system-ui,sans-serif; padding:10px; }
+  .row { display:flex; gap:8px; }
+  input { width:100%; font-size:16px; padding:10px; margin:0 0 10px; border-radius:10px; border:1px solid #333; background:#0b0b0b; color:#fff; }
+  button { flex:1; padding:12px; font-size:16px; border:0; border-radius:12px; cursor:pointer; color:#fff; }
+  .b150 { background:#ff6161; }
+  .b500 { background:#469cff; }
+  .b3000 { background:#fce943; }
+  .hint { color:#aaa; font-size:12px; margin-top:8px; }
+  #msg { margin-top:10px; font-size:12px; color:#9fe; }
+</style>
+</head>
+<body>
+  <input id="name" placeholder="視聴者名（例: examおつゆ）" />
+  <div class="row">
+    <button class="b150"  onclick="send(300)">300</button>
+    <button class="b500"  onclick="send(1500)">1500</button>
+    <button class="b3000" onclick="send(4000)">4000</button>
+  </div>
+  <div class="hint">名前だけ入力 → ボタンで固定pt追加</div>
+  <div id="msg"></div>
+
+<script>
+  const API = "http://127.0.0.1:8787/add";
+
+  async function send(pt){
+    const name = document.getElementById("name").value.trim();
+    const msg = document.getElementById("msg");
+    if(!name){ alert("名前を入力してね"); return; }
+
+    msg.textContent = "送信中…";
+    const res = await fetch(API, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({name, pt})
+    });
+
+    if(!res.ok){
+      msg.textContent = "失敗: サーバー動いてる？（server.py）";
+      return;
+    }
+    const j = await res.json();
+    msg.textContent = `OK: ${j.name} +${j.pt}`;
+  }
+</script>
+</body>
+</html>
