@@ -1,9 +1,12 @@
+# Python
 __pycache__/
-*.py
+*.pyc
+
+# runtime / local data
 points.json
-obs_input.html
-add_points.py
-obs_add.py
-render_site.py
-server.py
-twitch_chat.py
+
+# generated files
+docs/viewer.html
+
+# local only
+start_server.bat
