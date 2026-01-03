@@ -37,7 +37,7 @@ th { color: #bbb; font-weight: 600; }
 <body>
   <div class="container">
     <h1>📊 応援pt（累計）</h1>
-    <div class="muted">更新: 2026-01-03 14:46:13（JST）</div>
+    <div class="muted">更新: 2026-01-03 14:46:30（JST）</div>
 
     <div class="tabs"><a class="tab" href="daily.html">日間</a><a class="tab" href="monthly.html">月間</a><a class="tab active" href="total.html">累計</a></div>
 
@@ -52,14 +52,15 @@ th { color: #bbb; font-weight: 600; }
         <tbody>
           <tr><td>1</td><td>075689</td><td>4000</td></tr>
 <tr><td>2</td><td>おためしおつゆ</td><td>300</td></tr>
+<tr><td>3</td><td>075089</td><td>300</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
 <script>
-const labels = ["075689", "おためしおつゆ"];
-const values = [4000, 300];
+const labels = ["075689", "おためしおつゆ", "075089"];
+const values = [4000, 300, 300];
 
 new Chart(document.getElementById("chart"), {
   type: "bar",
